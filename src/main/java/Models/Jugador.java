@@ -12,6 +12,22 @@ public class Jugador {
 
     private boolean uso = false;
     private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private int vidas=7;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+public void restarVida(){
+        this.vidas--;
+}
+    public Jugador(String name) {
+        this.name = name;
+    }
+
+    public int getVidas() {
+        return vidas;
+    }
 
     public static String randomAlphaNumeric(int count) {
         StringBuilder builder = new StringBuilder();
@@ -22,7 +38,7 @@ public class Jugador {
         return builder.toString();
     }
 
-    public synchronized String pedirLetra(){
+    public  String pedirLetra(){
         String valor = "";
 
         try {

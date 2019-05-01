@@ -4,28 +4,37 @@ import Models.Jugador;
 import Models.Tablero;
 
 public class Hilo extends Thread {
+
+    private Tablero tablero;
+    private Jugador jugador;
+    //private static boolean despierto=true;
+
+
+    public Hilo(Tablero tablero, Jugador jugador) {
+        this.tablero = tablero;
+        this.jugador = jugador;
+    }
+
+    public boolean isWin(){
+        return tablero.isGanador();
+    }
+
     @Override
     public void run() {
-        super.run();
-        Tablero tablero = new Tablero();
-        tablero.imprimir();
-        Jugador jugador = new Jugador();
-        boolean ganador = false;
-
-        for (int i = 1; i <= tablero.getCantidadElementos() * 2; i++) {
-            String letra = jugador.pedirLetra();
-            tablero.verificar(letra);
-            tablero.imprimir();
-            if (tablero.verificarGanador()) {
-                ganador = true;
-                break;
-            }
+        try{
+            super.run();
+        while(jugador.getVidas()>0 && !tablero.isGanador()) {
+            /*System.out.println("hilo "+jugador.getName());
+            while(!despierto) wait();
+            despierto=false;*/
+            tablero.jugar(jugador);
+            /*despierto=true;
+            notifyAll();*/
         }
-        if (ganador) {
-            System.out.println("HAZ GANADO!!!");
 
-        }else{
-            System.out.println("VUELVE A INTENTARLO!!!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
