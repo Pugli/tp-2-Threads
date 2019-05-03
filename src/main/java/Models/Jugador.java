@@ -12,8 +12,11 @@ public class Jugador {
 
     private boolean uso = false;
     private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private int vidas=7;
+    private int vidas=20;
     private String name;
+    private String[] palabraAAdivinar = {"J", "A", "V", "A"};
+    private String[] palabraAdivinada;
+    private boolean ganador = false;
 
     public String getName() {
         return name;
@@ -23,6 +26,8 @@ public void restarVida(){
 }
     public Jugador(String name) {
         this.name = name;
+        palabraAdivinada = new String[palabraAAdivinar.length];
+        limpiar();
     }
 
     public int getVidas() {
@@ -49,6 +54,28 @@ public void restarVida(){
             Logger.getLogger(Jugador.class.getName()).log(Level.SEVERE, null, ex);
         }
         return valor;
+    }
+
+    public void limpiar() {
+        for (int i = 0; i < palabraAdivinada.length; i++) {
+            palabraAdivinada[i] = "";
+        }
+    }
+
+    public String[] getPalabraAAdivinar() {
+        return palabraAAdivinar;
+    }
+
+    public String[] getPalabraAdivinada() {
+        return palabraAdivinada;
+    }
+
+    public void setGanador(boolean ganador) {
+        this.ganador = ganador;
+    }
+
+    public boolean isGanador() {
+        return ganador;
     }
 }
 

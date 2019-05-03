@@ -16,14 +16,14 @@ public class Hilo extends Thread {
     }
 
     public boolean isWin(){
-        return tablero.isGanador();
+        return jugador.isGanador();
     }
 
     @Override
     public void run() {
         try{
             super.run();
-        while(jugador.getVidas()>0 && !tablero.isGanador()) {
+        while(jugador.getVidas()>0 && !jugador.isGanador()) {
             /*System.out.println("hilo "+jugador.getName());
             while(!despierto) wait();
             despierto=false;*/

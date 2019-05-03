@@ -28,7 +28,13 @@ public class App
 
         hilo1.start();
         hilo2.start();
-
+*/
+        try{
+            h1.join();
+            h2.join();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if (h1.isWin()) {
             System.out.println("HAZ GANADO!!!"+j1.getName());
         }else{
@@ -41,6 +47,6 @@ public class App
             System.out.println("VUELVE A INTENTARLO!!!"+j2.getName());
         }
 
-         */
+
     }
 }
